@@ -8,6 +8,7 @@ Blog project for M101JS
 ./views/ - html templates
 
 Getting started
-
+```nodejs
 npm install
 node app.js
+```
