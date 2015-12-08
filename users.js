@@ -30,9 +30,14 @@ function UsersDAO(db) {
 
         users.insert(user, function (err, result) {
             "use strict";
-            callback(err, result[0]);
+
+            if (!err) {
+                console.log("Inserted new user");
+                return callback(null, result[0]);
+            }
+
+            return callback(err, null);
         });
-        // callback(Error("addUser Not Yet Implemented!"), null);
     }
 
     this.validateLogin = function(username, password, callback) {
@@ -63,9 +68,7 @@ function UsersDAO(db) {
             }
         }
 
-
-        users.findOne({ '_id' : username}, validateUserDoc);
-        // callback(Error("validateLogin Not Yet Implemented!"), null);
+        users.findOne({ '_id' : username }, validateUserDoc);
     }
 }
 
